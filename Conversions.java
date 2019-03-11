@@ -54,6 +54,7 @@ public class Conversions {
         this.value = this.value + ((int) Math.pow(2, i));
       }
     }
+    this.setConverted();
     return this.value;
   }
 
