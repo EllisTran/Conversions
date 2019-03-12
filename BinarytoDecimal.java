@@ -1,4 +1,3 @@
-
 class BinarytoDecimal extends Conversions {
   BinarytoDecimal(int num) {
     this.setNumber(num);
@@ -8,6 +7,7 @@ class BinarytoDecimal extends Conversions {
   protected void setNumber(int num) {
     this.number1 = num;
   }
+
   protected void setConversionName(String conversionName) {
     this.conversionName = conversionName;
   }
@@ -19,18 +19,19 @@ class BinarytoDecimal extends Conversions {
   public int getNumber1() {
     return this.number1;
   }
-  
-  protected void setConverted(){
+
+  protected void setConverted() {
     this.converted = true;
   }
 
-  public boolean getConverted(){
+  public boolean getConverted() {
     return this.converted;
   }
 
   protected void setValue(int num) {
     this.value = num;
   }
+
   public int getValue() {
     return this.value;
   }
@@ -58,6 +59,7 @@ class BinarytoDecimal extends Conversions {
     }
     return sb.toString();
   }
+
   public void printConversion() {
     System.out.println("The conversion name is: " + this.getConversionName());
     System.out.println("The number to be converted is: " + this.getNumber1());
