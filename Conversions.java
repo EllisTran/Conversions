@@ -5,8 +5,6 @@ import java.lang.Math;
   protected int number1 = 0;
   protected int value = 0;
   protected boolean converted = false;
-
-  Conversions() { }
   
   //Setter and Getter Functions
   abstract void setNumber(int num);
