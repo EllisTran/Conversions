@@ -11,51 +11,60 @@ public class Conversions {
     this.setNumber(num);
   }
 
-  private void setConversionName(String conversionName) {
-    this.conversionName = conversionName;
-  }
-
+  
+  //Setter and Getter Functions
   private void setNumber(int num) {
     this.number1 = num;
-  }
-
-  public String getConversionName() {
-    return this.conversionName;
   }
 
   public int getNumber1() {
     return this.number1;
   }
+
+  private void setConversionName(String conversionName) {
+    this.conversionName = conversionName;
+  }
+
+  public String getConversionName() {
+    return this.conversionName;
+  }
+  
   private void setConverted() {
     this.converted = true;
   }
 
-  public boolean getConverted() {
+  private boolean getConverted() {
     return this.converted;
   }
+
   public int getConversionValue() {
-    if (this.conversionName.equals("Binary to Decimal") && !this.converted) {
+    if (this.conversionName.equals("Binary to Decimal") && !this.getConverted()) {
       return this.BinarytoDecimal();
     }
-    if (this.converted) 
-      return this.value;
+    return this.getValue();
+  }
+  
+  private void setValue(int value) {
+    this.value = value;
+  }
+  public int getValue() {
     return this.value;
   }
 
   private int BinarytoDecimal() {
     String number = Integer.toString(this.number1);
-    System.out.println("The length of the number is: " + number.length());
 
     // Reverse the string
     String numberToConvert = reverseString(number);
 
     for (int i = 0; i < number.length(); i++) {
       if (numberToConvert.charAt(i) == '1') {
-        this.value = this.value + ((int) Math.pow(2, i));
+        this.setValue(this.value + ((int) Math.pow(2, i)));
       }
     }
+
     this.setConverted();
-    return this.value;
+    return this.getValue();
   }
 
   private String reverseString(String number) {
@@ -65,4 +74,5 @@ public class Conversions {
     }
     return sb.toString();
   }
+  
 }
