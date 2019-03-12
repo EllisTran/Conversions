@@ -17,5 +17,5 @@ import java.lang.Math;
   abstract int getValue();
   abstract String getConversionName();
   abstract void setConversionName(String conversionName);
-
+  abstract void printConversion();
 }
