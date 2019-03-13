@@ -1,3 +1,7 @@
+import java.util.*;
+import java.util.concurrent.TimeUnit;
+import java.time.Duration;
+import java.time.Instant;
 class BinarytoDecimal extends Conversions {
   BinarytoDecimal(int num) {
     this.setNumber(num);
@@ -37,18 +41,37 @@ class BinarytoDecimal extends Conversions {
   }
 
   public int doConversion() {
-    String number = Integer.toString(this.number1);
+    this.setValue(0);
+    String number = Integer.toString(this.getNumber1());
 
     // Reverse the string
     String numberToConvert = reverseString(number);
 
     for (int i = 0; i < number.length(); i++) {
       if (numberToConvert.charAt(i) == '1') {
-        this.setValue(this.value + ((int) Math.pow(2, i)));
+        this.setValue(this.getValue() + ((int) Math.pow(2, i)));
       }
     }
 
     this.setConverted();
+    return this.getValue();
+  }
+
+  public int doConversionWithStack() {
+    this.setValue(0);
+    String number = Integer.toString(this.getNumber1());
+    Stack<Integer> stack = new Stack<Integer>();
+    for (int i = number.length() - 1; i >= 0; i--) {
+      stack.push(Character.getNumericValue(number.charAt(i)));
+    }
+    for (int i = 0; i < number.length(); i++) {
+      int num = stack.pop();
+      if (num == 1) {
+        this.setValue(this.getValue() + ((int) Math.pow(2, i)));
+      }
+    }
+    this.setConverted();
+
     return this.getValue();
   }
 
@@ -63,6 +86,7 @@ class BinarytoDecimal extends Conversions {
   public void printConversion() {
     System.out.println("The conversion name is: " + this.getConversionName());
     System.out.println("The number to be converted is: " + this.getNumber1());
-    System.out.println("The converted value is: " + this.doConversion());
+    System.out.println("The converted value is (Regular Method): " + this.doConversion());
+    System.out.println("The converted value is (Stack Method): " + this.doConversionWithStack());
   }
 }

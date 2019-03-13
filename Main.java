@@ -23,5 +23,8 @@ public class Main {
       BinarytoDecimal b2d = new BinarytoDecimal(num1);
       b2d.printConversion();
     }
+    else if (conversionType.equals("Binary to Hexadecimal")) {
+      
+    }
   }
 }
