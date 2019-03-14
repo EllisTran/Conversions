@@ -7,7 +7,6 @@ class BinarytoDecimal extends Conversions {
     this.setNumber(num);
     this.setConversionName("Binary to Decimal");
   }
-
   protected void setNumber(int num) {
     this.number1 = num;
   }
