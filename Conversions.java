@@ -2,22 +2,22 @@ import java.lang.Math;
 
 abstract class Conversions {
   protected String conversionName = "";
-  protected int number1 = 0;
-  protected int value = 0;
+  protected long number1 = 0;
+  protected long value = 0;
   protected boolean converted = false;
 
   // Setter and Getter Functions
-  abstract void setNumber(int num);
+  abstract void setNumber(long num);
 
-  abstract int getNumber1();
+  abstract long getNumber1();
 
   abstract void setConverted();
 
   abstract boolean getConverted();
 
-  abstract void setValue(int value);
+  abstract void setValue(long value);
 
-  abstract int getValue();
+  abstract long getValue();
 
   abstract String getConversionName();
 

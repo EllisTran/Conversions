@@ -2,12 +2,12 @@ import java.util.*;
 
 class BinarytoHexadecimal extends Conversions {
   private String stringValue = "";
-  BinarytoHexadecimal(int num) {
+  BinarytoHexadecimal(long num) {
     this.setNumber(num);
     this.setConversionName("Binary to Hexadecimal");
   }
 
-  protected void setNumber(int num) {
+  protected void setNumber(long num) {
     this.number1 = num;
   }
 
@@ -19,7 +19,7 @@ class BinarytoHexadecimal extends Conversions {
     return this.conversionName;
   }
 
-  public int getNumber1() {
+  public long getNumber1() {
     return this.number1;
   }
 
@@ -31,11 +31,11 @@ class BinarytoHexadecimal extends Conversions {
     return this.converted;
   }
   @Override
-  protected void setValue(int num) {
+  protected void setValue(long num) {
     this.value = num;
   }
 
-  public int getValue() {
+  public long getValue() {
     return this.value;
   }
   private void setStringValue(String number) {
@@ -46,8 +46,8 @@ class BinarytoHexadecimal extends Conversions {
     return this.stringValue;
   }
 
-  private char hexConverted(int number) {
-    switch (number) {
+  private char hexConverted(long number) {
+    switch ((int) number) {
     case 10:
       return 'a';
     case 11:
@@ -67,8 +67,8 @@ class BinarytoHexadecimal extends Conversions {
 
   private String hexConversion(Stack<Character> number) {
     System.out.println("HexConversion");
-    int numberToCon = 0;
-    Stack<Integer> stackInt = new Stack<Integer>();
+    long numberToCon = 0;
+    Stack<Long> stackInt = new Stack<Long>();
     int i = 0;
     char pop = ' ';
     String result = "";
@@ -98,14 +98,13 @@ class BinarytoHexadecimal extends Conversions {
       
     }
     this.setStringValue(result);
-    System.out.println(result);
-    
+
     return this.getStringValue();
   }
 
   public String doConversion() {
     this.setValue(0);
-    String number = Integer.toString(this.getNumber1());
+    String number = Long.toString(this.getNumber1());
     while (number.length() % 4 != 0) {
       number = "0" + number;
     }

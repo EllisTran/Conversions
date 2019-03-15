@@ -4,7 +4,7 @@ public class Main {
   public static void main(String[] args) {
     // Initialize variables
     String conversionType = "";
-    int num1 = 0;
+    long num1 = 0;
 
     // Get user input
     Scanner scan = new Scanner(System.in);
@@ -15,8 +15,8 @@ public class Main {
       conversionType = scan.nextLine();
     } while (!(conversionType.equals("Binary to Decimal") || conversionType.equals("Binary to Hexadecimal")));
 
-    System.out.print("What numbers would you like to convert? ");
-    num1 = scan.nextInt();
+    System.out.print("What numbers would you like to convert? (Up to 20 digits): ");
+    num1 = scan.nextLong();
     scan.close();
 
     if (conversionType.equals("Binary to Decimal")) {
