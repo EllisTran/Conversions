@@ -7,7 +7,6 @@ class BinarytoDecimal extends Conversions {
     this.setNumber(num);
     this.setConversionName("Binary to Decimal");
   }
-
   protected void setNumber(int num) {
     this.number1 = num;
   }
@@ -58,16 +57,23 @@ class BinarytoDecimal extends Conversions {
   }
 
   public int doConversionWithStack() {
+    int num = 0;
     this.setValue(0);
-    String number = Integer.toString(this.getNumber1());
+    String number = reverseString(Integer.toString(this.getNumber1()));
     Stack<Integer> stack = new Stack<Integer>();
     for (int i = number.length() - 1; i >= 0; i--) {
       stack.push(Character.getNumericValue(number.charAt(i)));
     }
     for (int i = 0; i < number.length(); i++) {
-      int num = stack.pop();
+      if (stack.empty()) {
+        break;
+      }
+      num = stack.pop();
       if (num == 1) {
         this.setValue(this.getValue() + ((int) Math.pow(2, i)));
+      }
+      else if (num == 0) {
+        continue;
       }
     }
     this.setConverted();
