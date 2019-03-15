@@ -66,7 +66,7 @@ class BinarytoHexadecimal extends Conversions {
   }
 
   private String hexConversion(Stack<Character> number) {
-    System.out.println("HexConversion");
+
     long numberToCon = 0;
     Stack<Long> stackInt = new Stack<Long>();
     int i = 0;
@@ -90,7 +90,6 @@ class BinarytoHexadecimal extends Conversions {
       i++;
     }
     while(!stackInt.isEmpty()) {
-      System.out.println(stackInt.peek());
       if (stackInt.peek() >= 10) {
         result += this.hexConverted(stackInt.pop());
       }
@@ -108,7 +107,7 @@ class BinarytoHexadecimal extends Conversions {
     while (number.length() % 4 != 0) {
       number = "0" + number;
     }
-    System.out.println("STRING NUMBER: " + number);
+
     Stack<Character> stack = new Stack<Character>();
     StringBuilder numberToConvert = new StringBuilder(number);
 
