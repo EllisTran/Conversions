@@ -3,11 +3,11 @@ import java.util.concurrent.TimeUnit;
 import java.time.Duration;
 import java.time.Instant;
 class BinarytoDecimal extends Conversions {
-  BinarytoDecimal(int num) {
+  BinarytoDecimal(long num) {
     this.setNumber(num);
     this.setConversionName("Binary to Decimal");
   }
-  protected void setNumber(int num) {
+  protected void setNumber(long num) {
     this.number1 = num;
   }
 
@@ -19,7 +19,7 @@ class BinarytoDecimal extends Conversions {
     return this.conversionName;
   }
 
-  public int getNumber1() {
+  public long getNumber1() {
     return this.number1;
   }
 
@@ -31,17 +31,17 @@ class BinarytoDecimal extends Conversions {
     return this.converted;
   }
 
-  protected void setValue(int num) {
+  protected void setValue(long num) {
     this.value = num;
   }
 
-  public int getValue() {
+  public long getValue() {
     return this.value;
   }
 
-  public int doConversion() {
+  public long doConversion() {
     this.setValue(0);
-    String number = Integer.toString(this.getNumber1());
+    String number = Long.toString(this.getNumber1());
 
     // Reverse the string
     String numberToConvert = reverseString(number);
@@ -56,13 +56,13 @@ class BinarytoDecimal extends Conversions {
     return this.getValue();
   }
 
-  public int doConversionWithStack() {
-    int num = 0;
+  public long doConversionWithStack() {
+    long num = 0;
     this.setValue(0);
-    String number = reverseString(Integer.toString(this.getNumber1()));
-    Stack<Integer> stack = new Stack<Integer>();
+    String number = reverseString(Long.toString(this.getNumber1()));
+    Stack<Long> stack = new Stack<Long>();
     for (int i = number.length() - 1; i >= 0; i--) {
-      stack.push(Character.getNumericValue(number.charAt(i)));
+      stack.push((long) Character.getNumericValue(number.charAt(i)));
     }
     for (int i = 0; i < number.length(); i++) {
       if (stack.empty()) {
