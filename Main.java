@@ -25,7 +25,7 @@ public class Main {
     }
     else if (conversionType.equals("Binary to Hexadecimal")) {
       BinarytoHexadecimal b2h = new BinarytoHexadecimal(num1);
-      b2h.doConversion();
+      b2h.printConversion();
     }
   }
 }

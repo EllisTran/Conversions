@@ -1,6 +1,7 @@
 import java.util.*;
 
 class BinarytoHexadecimal extends Conversions {
+  private String stringValue = "";
   BinarytoHexadecimal(int num) {
     this.setNumber(num);
     this.setConversionName("Binary to Hexadecimal");
@@ -29,13 +30,20 @@ class BinarytoHexadecimal extends Conversions {
   public boolean getConverted() {
     return this.converted;
   }
-
+  @Override
   protected void setValue(int num) {
     this.value = num;
   }
 
   public int getValue() {
     return this.value;
+  }
+  private void setStringValue(String number) {
+    this.stringValue = number;
+  }
+
+  public String getStringValue() {
+    return this.stringValue;
   }
 
   private char hexConverted(int number) {
@@ -57,66 +65,63 @@ class BinarytoHexadecimal extends Conversions {
     }
   }
 
-  private char hexConversion(char[] number) {
-    System.out.println("REAL SIZE: " + number.length);
-    for (int i = 0; i < number.length; i++) {
-      System.out.println(number[0]);
-      if (i < number.length) {
-        System.out.println("HELLO WORLD" + i);
+  private String hexConversion(Stack<Character> number) {
+    System.out.println("HexConversion");
+    int numberToCon = 0;
+    Stack<Integer> stackInt = new Stack<Integer>();
+    int i = 0;
+    char pop = ' ';
+    String result = "";
+    while(!number.isEmpty()) {
+      pop = number.pop();
+      if (pop == '1') {
+        numberToCon = numberToCon + ((int) Math.pow(2, i));
       }
-    }
-    System.out.println("SIZE: " + number.length);
-    int numberBeforeHex = 0;
-    for (int i = 0; i < number.length; i++) {
-      // System.out.println(number[i]);
-      if (number[i] == '1') {
-        numberBeforeHex = numberBeforeHex + ((int) Math.pow(2, i));
+      if (i % 3 == 0  && i !=0) {
+        if (numberToCon >= 10) {
+          stackInt.push(numberToCon);
+        }
+        else {
+          stackInt.push(numberToCon);
+        }
+        numberToCon = 0;
+        i = -1;
       }
+      i++;
     }
-    System.out.println(numberBeforeHex);
-    if (numberBeforeHex > 10) {
-      System.out.println(this.hexConverted(numberBeforeHex));
-      return this.hexConverted(numberBeforeHex);
-    } else
-      return (char) numberBeforeHex;
+    while(!stackInt.isEmpty()) {
+      System.out.println(stackInt.peek());
+      if (stackInt.peek() >= 10) {
+        result += this.hexConverted(stackInt.pop());
+      }
+      else result = result + stackInt.pop();
+      
+    }
+    this.setStringValue(result);
+    System.out.println(result);
+    
+    return this.getStringValue();
   }
 
-  public int doConversion() {
-    String s = "";
-    boolean count = false;
+  public String doConversion() {
     this.setValue(0);
     String number = Integer.toString(this.getNumber1());
-
     while (number.length() % 4 != 0) {
       number = "0" + number;
     }
-    // Reverse the string
     System.out.println("STRING NUMBER: " + number);
-    String numberTest = reverseString(number);
-    // StringBuilder numberToConvert = new
-     StringBuilder numberToConvert = new StringBuilder(numberTest);
-    
     Stack<Character> stack = new Stack<Character>();
+    StringBuilder numberToConvert = new StringBuilder(number);
+
     char[] sendToHexConversion = new char[64];
     for (int i = 0; i < numberToConvert.length(); i++) {
       sendToHexConversion[i] = numberToConvert.charAt(i);
-      System.out.println("Index " + i + ": " + sendToHexConversion[i]);
-      if (i % 3 == 0 && i != 1 && i != 0 && !count) {
-        System.out.println("LALA: " + i);
-        // for (int j = 0; j < 4; j++) {
-        //   System.out.println("Index " + j + ": " + sendToHexConversion[j]);
-        // }
-        //this.hexConversion(sendToHexConversion);
-       // numberToConvert.delete(0, 4);
-        count = true;
-      }
-      else if (i % 4 == 0 && i!=1 && i!=0 && count && i != 4) {
-        System.out.println("LALA: " + i);
-      }
+      stack.push(sendToHexConversion[i]);
     }
-
+    this.hexConversion(stack);
+    
     this.setConverted();
-    return this.getValue();
+    return this.getStringValue();
   }
 
   private String reverseString(String number) {
