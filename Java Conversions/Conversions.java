@@ -23,5 +23,10 @@ abstract class Conversions {
 
   abstract void setConversionName(String conversionName);
 
-  abstract void printConversion();
+//  abstract void printConversion();
+  protected void printConversion() {
+    System.out.println("The conversion name is: " + this.getConversionName());
+    System.out.println("The number to be converted is: " + this.getNumber1());
+    System.out.println("The converted value is: " + this.getValue());
+  }
 }

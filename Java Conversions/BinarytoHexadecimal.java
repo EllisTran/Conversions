@@ -122,9 +122,9 @@ class BinarytoHexadecimal extends Conversions {
     return this.getStringValue();
   }
 
-  public void printConversion() {
-    System.out.println("The conversion name is: " + this.getConversionName());
-    System.out.println("The number to be converted is: " + this.getNumber1());
-    System.out.println("The converted value is (Regular Method): " + this.doConversion());
-  }
+  // public void printConversion() {
+  //   System.out.println("The conversion name is: " + this.getConversionName());
+  //   System.out.println("The number to be converted is: " + this.getNumber1());
+  //   System.out.println("The converted value is (Regular Method): " + this.doConversion());
+  // }
 }
