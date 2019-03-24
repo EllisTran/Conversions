@@ -1,18 +1,48 @@
 import java.util.*;
-import java.util.concurrent.locks.Lock;
 
 class BinarytoHexadecimal extends Conversions {
   private String stringValue = "";
   BinarytoHexadecimal(long num) {
-    super(num, "Binary to Hexadecimal");
-    this.doConversion();
+    this.setNumber(num);
+    this.setConversionName("Binary to Hexadecimal");
   }
 
+  protected void setNumber(long num) {
+    this.number1 = num;
+  }
+
+  protected void setConversionName(String conversionName) {
+    this.conversionName = conversionName;
+  }
+
+  public String getConversionName() {
+    return this.conversionName;
+  }
+
+  public long getNumber1() {
+    return this.number1;
+  }
+
+  protected void setConverted() {
+    this.converted = true;
+  }
+
+  public boolean getConverted() {
+    return this.converted;
+  }
+  @Override
+  protected void setValue(long num) {
+    this.value = num;
+  }
+
+  public long getValue() {
+    return this.value;
+  }
   private void setStringValue(String number) {
     this.stringValue = number;
   }
 
-  private String getStringValue() {
+  public String getStringValue() {
     return this.stringValue;
   }
 
@@ -36,6 +66,7 @@ class BinarytoHexadecimal extends Conversions {
   }
 
   private String hexConversion(Stack<Character> number) {
+
     long numberToCon = 0;
     Stack<Long> stackInt = new Stack<Long>();
     int i = 0;
@@ -70,9 +101,9 @@ class BinarytoHexadecimal extends Conversions {
     return this.getStringValue();
   }
 
-  public void doConversion() {
+  public String doConversion() {
     this.setValue(0);
-    String number = Long.toString(this.getNumber());
+    String number = Long.toString(this.getNumber1());
     while (number.length() % 4 != 0) {
       number = "0" + number;
     }
@@ -88,11 +119,12 @@ class BinarytoHexadecimal extends Conversions {
     this.hexConversion(stack);
     
     this.setConverted();
+    return this.getStringValue();
   }
-  @Override
+
   public void printConversion() {
     System.out.println("The conversion name is: " + this.getConversionName());
-    System.out.println("The number to be converted is: " + this.getNumber());
-    System.out.println("The converted value is: " + this.getStringValue());
+    System.out.println("The number to be converted is: " + this.getNumber1());
+    System.out.println("The converted value is (Regular Method): " + this.doConversion());
   }
 }
