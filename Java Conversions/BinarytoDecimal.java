@@ -4,13 +4,44 @@ import java.time.Duration;
 import java.time.Instant;
 class BinarytoDecimal extends Conversions {
   BinarytoDecimal(long num) {
-    super(num, "Binary to Decimal");
-    this.doConversion();
+    this.setNumber(num);
+    this.setConversionName("Binary to Decimal");
+  }
+  protected void setNumber(long num) {
+    this.number1 = num;
   }
 
-  public void doConversion() {
+  protected void setConversionName(String conversionName) {
+    this.conversionName = conversionName;
+  }
+
+  public String getConversionName() {
+    return this.conversionName;
+  }
+
+  public long getNumber1() {
+    return this.number1;
+  }
+
+  protected void setConverted() {
+    this.converted = true;
+  }
+
+  public boolean getConverted() {
+    return this.converted;
+  }
+
+  protected void setValue(long num) {
+    this.value = num;
+  }
+
+  public long getValue() {
+    return this.value;
+  }
+
+  public long doConversion() {
     this.setValue(0);
-    String number = Long.toString(this.getNumber());
+    String number = Long.toString(this.getNumber1());
 
     // Reverse the string
     String numberToConvert = reverseString(number);
@@ -22,12 +53,13 @@ class BinarytoDecimal extends Conversions {
     }
 
     this.setConverted();
+    return this.getValue();
   }
 
   public long doConversionWithStack() {
     long num = 0;
     this.setValue(0);
-    String number = reverseString(Long.toString(this.getNumber()));
+    String number = reverseString(Long.toString(this.getNumber1()));
     Stack<Long> stack = new Stack<Long>();
     for (int i = number.length() - 1; i >= 0; i--) {
       stack.push((long) Character.getNumericValue(number.charAt(i)));
