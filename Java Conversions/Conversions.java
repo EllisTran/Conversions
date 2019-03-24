@@ -2,10 +2,13 @@ import java.lang.Math;
 
 abstract class Conversions {
   protected String conversionName = "";
-  protected long number1 = 0;
+  protected long number = 0;
   protected long value = 0;
   protected boolean converted = false;
-
+  Conversions(long number, String conversionName) {
+    this.setNumber(number);
+    this.setConversionName(conversionName);
+  }
   // Setter and Getter Functions
   private void setNumber(long number) {
     this.number = number;
@@ -38,5 +41,4 @@ abstract class Conversions {
     System.out.println("The number to be converted is: " + this.getNumber());
     System.out.println("The converted value is: " + this.getValue());
   }
-  //
 }
