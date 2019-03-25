@@ -32,7 +32,7 @@ class BinarytoDecimal extends Conversions {
         this.setValue(this.getValue() + ((int) Math.pow(2, i)));
       }
     }
-
+    this.setStringValue(Long.toString(this.getValue()));
     this.setConverted();
   }
 
@@ -57,7 +57,7 @@ class BinarytoDecimal extends Conversions {
       }
     }
     this.setConverted();
-
+    this.setStringValue(Long.toString(this.getValue()));
     return this.getValue();
   }
 

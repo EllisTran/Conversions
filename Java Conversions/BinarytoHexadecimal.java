@@ -91,10 +91,10 @@ class BinarytoHexadecimal extends Conversions {
     
     this.setConverted();
   }
-  @Override
-  public void printConversion() {
-    System.out.println("The conversion name is: " + this.getConversionName());
-    System.out.println("The number to be converted is: " + this.getNumber());
-    System.out.println("The converted value is: " + this.getStringValue());
-  }
+  // @Override
+  // public void printConversion() {
+  //   System.out.println("The conversion name is: " + this.getConversionName());
+  //   System.out.println("The number to be converted is: " + this.getNumber());
+  //   System.out.println("The converted value is: " + this.getStringValue());
+  // }
 }
