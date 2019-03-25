@@ -1,20 +1,22 @@
 import java.util.*;
-import java.util.concurrent.locks.Lock;
+import java.util.Scanner;
 
 class BinarytoHexadecimal extends Conversions {
-  private String stringValue = "";
-  BinarytoHexadecimal(long num) {
-    super(num, "Binary to Hexadecimal");
-    this.doConversion();
+  BinarytoHexadecimal(long num, Scanner scan) {
+    super(num, scan, "Binary to Hexadecimal");
+    this.doFirst();
+  }
+  protected void doFirst() {
+    this.introduction();
+    if (this.getDataStructureName().equals("Stack")) {
+      System.out.println("Stack");
+    }
+    else if (this.getDataStructureName().equals("Queue")) {
+      System.out.println("Queue");
+    }
   }
 
-  private void setStringValue(String number) {
-    this.stringValue = number;
-  }
-
-  private String getStringValue() {
-    return this.stringValue;
-  }
+  
 
   private char hexConverted(long number) {
     switch ((int) number) {
@@ -89,10 +91,10 @@ class BinarytoHexadecimal extends Conversions {
     
     this.setConverted();
   }
-  @Override
-  public void printConversion() {
-    System.out.println("The conversion name is: " + this.getConversionName());
-    System.out.println("The number to be converted is: " + this.getNumber());
-    System.out.println("The converted value is: " + this.getStringValue());
-  }
+  // @Override
+  // public void printConversion() {
+  //   System.out.println("The conversion name is: " + this.getConversionName());
+  //   System.out.println("The number to be converted is: " + this.getNumber());
+  //   System.out.println("The converted value is: " + this.getStringValue());
+  // }
 }
