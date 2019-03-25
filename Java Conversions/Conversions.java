@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 abstract class Conversions {
   protected String conversionName = "";
+  protected String stringValue = "";
   protected long number = 0;
   protected long value = 0;
   protected String dataName = "";
@@ -22,10 +23,10 @@ abstract class Conversions {
       if (firstIter) {
         System.out.println("Error. Please enter again\n");
       }
-      System.out.println("Stack\nQueue\n");
+      System.out.println("Stack\nQueue\nNormal (Iterates through a loop)");
       dataName = this.scan.next();
       firstIter = true;
-    } while (!(dataName.equals("Stack") || dataName.equals("Queue")));
+    } while (!(dataName.equals("Stack") || dataName.equals("Queue") || dataName.equals("Normal")));
     System.out.println("\nYou chose the " + dataName + " method\n");
     this.setDataStructureName(dataName);
   }
@@ -64,6 +65,13 @@ abstract class Conversions {
   }
   protected String getConversionName() {
     return this.conversionName;
+  }
+  protected void setStringValue(String number) {
+    this.stringValue = number;
+  }
+
+  protected String getStringValue() {
+    return this.stringValue;
   }
   protected abstract void doConversion();
 

@@ -2,7 +2,6 @@ import java.util.*;
 import java.util.Scanner;
 
 class BinarytoHexadecimal extends Conversions {
-  private String stringValue = "";
   BinarytoHexadecimal(long num, Scanner scan) {
     super(num, scan, "Binary to Hexadecimal");
     this.doFirst();
@@ -17,13 +16,7 @@ class BinarytoHexadecimal extends Conversions {
     }
   }
 
-  private void setStringValue(String number) {
-    this.stringValue = number;
-  }
-
-  private String getStringValue() {
-    return this.stringValue;
-  }
+  
 
   private char hexConverted(long number) {
     switch ((int) number) {

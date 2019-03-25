@@ -10,9 +10,13 @@ class BinarytoDecimal extends Conversions {
     this.introduction();
     if (this.getDataStructureName().equals("Stack")) {
       System.out.println("Stack");
+      this.doConversionWithStack();
     }
     else if (this.getDataStructureName().equals("Queue")) {
       System.out.println("Queue");
+    }
+    else if (this.getDataStructureName().equals("Normal")) {
+      this.doConversion();
     }
   }
 
