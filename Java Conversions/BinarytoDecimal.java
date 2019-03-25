@@ -1,11 +1,19 @@
-import java.util.*;
-import java.util.concurrent.TimeUnit;
-import java.time.Duration;
-import java.time.Instant;
+import java.util.Stack;
+import java.util.Scanner;
 class BinarytoDecimal extends Conversions {
-  BinarytoDecimal(long num) {
-    super(num, "Binary to Decimal");
-    this.doConversion();
+  BinarytoDecimal(long num, Scanner scan) {
+    super(num, scan, "Binary to Decimal");
+    this.doFirst();
+  }
+
+  protected void doFirst() {
+    this.introduction();
+    if (this.getDataStructureName().equals("Stack")) {
+      System.out.println("Stack");
+    }
+    else if (this.getDataStructureName().equals("Queue")) {
+      System.out.println("Queue");
+    }
   }
 
   public void doConversion() {

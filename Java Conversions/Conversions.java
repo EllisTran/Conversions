@@ -1,20 +1,51 @@
 import java.lang.Math;
+import java.util.Scanner;
 
 abstract class Conversions {
   protected String conversionName = "";
   protected long number = 0;
   protected long value = 0;
+  protected String dataName = "";
   protected boolean converted = false;
-  Conversions(long number, String conversionName) {
+  protected Scanner scan;
+  Conversions(long number, Scanner scan, String conversionName) {
     this.setNumber(number);
     this.setConversionName(conversionName);
+    this.setScanner(scan);
   }
+
+  protected void introduction() {
+    boolean firstIter = false;
+    String dataName = ""; // To get which data structure the user wants to use.
+    System.out.println("\nWelcome to the " + this.conversionName + " Conversion.\nWhich Data Structure would you like to use?\n");
+    do {
+      if (firstIter) {
+        System.out.println("Error. Please enter again\n");
+      }
+      System.out.println("Stack\nQueue\n");
+      dataName = this.scan.next();
+      firstIter = true;
+    } while (!(dataName.equals("Stack") || dataName.equals("Queue")));
+    System.out.println("\nYou chose the " + dataName + " method\n");
+    this.setDataStructureName(dataName);
+  }
+
+  abstract protected void doFirst();
   // Setter and Getter Functions
   private void setNumber(long number) {
     this.number = number;
   }
   protected long getNumber() {
     return this.number;
+  }
+  private void setScanner(Scanner scan) {
+    this.scan = scan;
+  }
+  private void setDataStructureName(String dataName) {
+    this.dataName = dataName;
+  }
+  protected String getDataStructureName() {
+    return this.dataName;
   }
   protected void setConverted() {
     this.converted = true;
@@ -38,6 +69,7 @@ abstract class Conversions {
 
   protected void printConversion() {
     System.out.println("The conversion name is: " + this.getConversionName());
+    System.out.println("The data structure used is: " + this.getDataStructureName());
     System.out.println("The number to be converted is: " + this.getNumber());
     System.out.println("The converted value is: " + this.getValue());
   }

@@ -1,11 +1,20 @@
 import java.util.*;
-import java.util.concurrent.locks.Lock;
+import java.util.Scanner;
 
 class BinarytoHexadecimal extends Conversions {
   private String stringValue = "";
-  BinarytoHexadecimal(long num) {
-    super(num, "Binary to Hexadecimal");
-    this.doConversion();
+  BinarytoHexadecimal(long num, Scanner scan) {
+    super(num, scan, "Binary to Hexadecimal");
+    this.doFirst();
+  }
+  protected void doFirst() {
+    this.introduction();
+    if (this.getDataStructureName().equals("Stack")) {
+      System.out.println("Stack");
+    }
+    else if (this.getDataStructureName().equals("Queue")) {
+      System.out.println("Queue");
+    }
   }
 
   private void setStringValue(String number) {
