@@ -1,13 +1,11 @@
 import java.util.Scanner;
-
 public class Main {
+
   public static void main(String[] args) {
-    // Initialize variables
     String conversionType = "";
     long num1 = 0;
     Scanner scan = new Scanner(System.in);
     // Get user input
-
     do {
       System.out.println("Types of conversions available:\nBinary to Decimal\nBinary to Hexadecimal\n");
       System.out.print("Pick a conversion type: ");

@@ -9,7 +9,7 @@ class BinarytoHexadecimal extends Conversions {
   protected void doFirst() {
     this.introduction();
     if (this.getDataStructureName().equals("Stack")) {
-      System.out.println("Stack");
+      this.doConversion();
     }
     else if (this.getDataStructureName().equals("Queue")) {
       System.out.println("Queue");
@@ -73,6 +73,7 @@ class BinarytoHexadecimal extends Conversions {
   }
 
   public void doConversion() {
+    long start = System.nanoTime();
     this.setValue(0);
     String number = Long.toString(this.getNumber());
     while (number.length() % 4 != 0) {
@@ -88,13 +89,8 @@ class BinarytoHexadecimal extends Conversions {
       stack.push(sendToHexConversion[i]);
     }
     this.hexConversion(stack);
-    
+    long end = System.nanoTime();
+    this.setTime(start, end);
     this.setConverted();
   }
-  // @Override
-  // public void printConversion() {
-  //   System.out.println("The conversion name is: " + this.getConversionName());
-  //   System.out.println("The number to be converted is: " + this.getNumber());
-  //   System.out.println("The converted value is: " + this.getStringValue());
-  // }
 }

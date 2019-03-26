@@ -21,6 +21,8 @@ class BinarytoDecimal extends Conversions {
   }
 
   public void doConversion() {
+    long start = System.nanoTime();
+
     this.setValue(0);
     String number = Long.toString(this.getNumber());
 
@@ -34,9 +36,13 @@ class BinarytoDecimal extends Conversions {
     }
     this.setStringValue(Long.toString(this.getValue()));
     this.setConverted();
+    long end = System.nanoTime();
+
+    this.setTime(start, end);
   }
 
   public long doConversionWithStack() {
+    long start = System.nanoTime();
     long num = 0;
     this.setValue(0);
     String number = reverseString(Long.toString(this.getNumber()));
@@ -58,6 +64,8 @@ class BinarytoDecimal extends Conversions {
     }
     this.setConverted();
     this.setStringValue(Long.toString(this.getValue()));
+    long end = System.nanoTime();
+    this.setTime(start, end);
     return this.getValue();
   }
 

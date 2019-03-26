@@ -6,6 +6,7 @@ abstract class Conversions {
   protected String stringValue = "";
   protected long number = 0;
   protected long value = 0;
+  protected long time = 0;
   protected String dataName = "";
   protected boolean converted = false;
   protected Scanner scan;
@@ -38,6 +39,12 @@ abstract class Conversions {
   }
   protected long getNumber() {
     return this.number;
+  }
+  protected void setTime(long timeStart, long timeEnd) {
+    this.time = (timeEnd - timeStart);
+  }
+  protected long getTime() {
+    return this.time/1000; //pico seconds
   }
   private void setScanner(Scanner scan) {
     this.scan = scan;
@@ -80,5 +87,6 @@ abstract class Conversions {
     System.out.println("The data structure used is: " + this.getDataStructureName());
     System.out.println("The number to be converted is: " + this.getNumber());
     System.out.println("The converted value is: " + this.getStringValue());
+    System.out.println("The time it took to convert: " + this.getTime() + " picoseconds");
   }
 }
