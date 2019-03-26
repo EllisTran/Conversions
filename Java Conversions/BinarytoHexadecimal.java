@@ -72,7 +72,7 @@ class BinarytoHexadecimal extends Conversions {
     return this.getStringValue();
   }
 
-  public void doConversion() {
+  protected void doConversion() {
     this.setValue(0);
     String number = Long.toString(this.getNumber());
     while (number.length() % 4 != 0) {

@@ -22,7 +22,7 @@ class BinarytoDecimal extends Conversions {
     this.setEndTime(); // End Time
   }
 
-  public void doConversion() {
+  protected void doConversion() {
 
     this.setValue(0);
     String number = Long.toString(this.getNumber());
@@ -40,7 +40,7 @@ class BinarytoDecimal extends Conversions {
 
   }
 
-  public long doConversionWithStack() {
+  protected long doConversionWithStack() {
     long num = 0;
     this.setValue(0);
     String number = reverseString(Long.toString(this.getNumber()));
