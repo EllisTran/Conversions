@@ -1,5 +1,6 @@
 import java.util.Stack;
 import java.util.Scanner;
+
 class BinarytoDecimal extends Conversions {
   BinarytoDecimal(long num, Scanner scan) {
     super(num, scan, "Binary to Decimal");
@@ -9,22 +10,20 @@ class BinarytoDecimal extends Conversions {
 
   protected void doFirst() {
     this.introduction();
-    this.setStartTime(); //Set time 
+    this.setStartTime(); // Set time
     if (this.getDataStructureName().equals("Stack")) {
       System.out.println("Stack");
       this.doConversionWithStack();
-    }
-    else if (this.getDataStructureName().equals("Queue")) {
+    } else if (this.getDataStructureName().equals("Queue")) {
       System.out.println("Queue");
-    }
-    else if (this.getDataStructureName().equals("Normal")) {
+    } else if (this.getDataStructureName().equals("Normal")) {
       this.doConversion();
     }
     this.setEndTime(); // End Time
   }
 
   public void doConversion() {
-    
+
     this.setValue(0);
     String number = Long.toString(this.getNumber());
 
@@ -38,7 +37,7 @@ class BinarytoDecimal extends Conversions {
     }
     this.setStringValue(Long.toString(this.getValue()));
     this.setConverted();
-    
+
   }
 
   public long doConversionWithStack() {
@@ -56,8 +55,7 @@ class BinarytoDecimal extends Conversions {
       num = stack.pop();
       if (num == 1) {
         this.setValue(this.getValue() + ((int) Math.pow(2, i)));
-      }
-      else if (num == 0) {
+      } else if (num == 0) {
         continue;
       }
     }

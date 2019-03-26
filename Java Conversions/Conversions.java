@@ -12,7 +12,7 @@ abstract class Conversions {
   private String dataName = "";
   private boolean converted = false;
   private Scanner scan;
-  
+
   Conversions(long number, Scanner scan, String conversionName) {
     this.setNumber(number);
     this.setConversionName(conversionName);
@@ -22,7 +22,8 @@ abstract class Conversions {
   protected void introduction() {
     boolean firstIter = false;
     String dataName = ""; // To get which data structure the user wants to use.
-    System.out.println("\nWelcome to the " + this.conversionName + " Conversion.\nWhich Data Structure would you like to use?\n");
+    System.out.println(
+        "\nWelcome to the " + this.conversionName + " Conversion.\nWhich Data Structure would you like to use?\n");
     do {
       if (firstIter) {
         System.out.println("Error. Please enter again\n");
@@ -35,59 +36,75 @@ abstract class Conversions {
     this.setDataStructureName(dataName);
   }
 
-  
   // Setter and Getter Functions
   private void setNumber(long number) {
     this.number = number;
   }
+
   protected long getNumber() {
     return this.number;
   }
+
   protected void setStartTime() {
     this.startTime = System.nanoTime();
   }
+
   protected void setEndTime() {
     this.endTime = System.nanoTime();
   }
+
   protected long getStartTime() {
     return this.startTime;
   }
+
   protected long getEndTime() {
     return this.endTime;
   }
+
   protected void setTime(long timeStart, long timeEnd) {
     this.time = (timeEnd - timeStart);
   }
+
   protected long getTime() {
-    return this.time/1000; //pico seconds
+    return this.time / 1000; // pico seconds
   }
+
   private void setScanner(Scanner scan) {
     this.scan = scan;
   }
+
   private void setDataStructureName(String dataName) {
     this.dataName = dataName;
   }
+
   protected String getDataStructureName() {
     return this.dataName;
   }
+
   protected void setConverted() {
     this.converted = true;
   }
+
   protected boolean getConverted() {
     return this.converted;
   }
+
   protected void setValue(long value) {
     this.value = value;
   }
+
   protected long getValue() {
     return this.value;
   }
+
   private void setConversionName(String conversionName) {
     this.conversionName = conversionName;
   }
+
   protected String getConversionName() {
     return this.conversionName;
   }
+
   protected void setStringValue(String number) {
     this.stringValue = number;
   }
@@ -98,6 +115,7 @@ abstract class Conversions {
 
   // Abstract methods
   protected abstract void doConversion();
+
   protected abstract void doFirst();
 
   protected void printConversion() {

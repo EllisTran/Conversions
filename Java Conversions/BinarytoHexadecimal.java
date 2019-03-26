@@ -7,19 +7,17 @@ class BinarytoHexadecimal extends Conversions {
     this.doFirst();
     this.setTime(this.getStartTime(), this.getEndTime());
   }
+
   protected void doFirst() {
     this.introduction();
     this.setStartTime();
     if (this.getDataStructureName().equals("Stack")) {
       this.doConversion();
-    }
-    else if (this.getDataStructureName().equals("Queue")) {
+    } else if (this.getDataStructureName().equals("Queue")) {
       System.out.println("Queue");
     }
     this.setEndTime();
   }
-
-  
 
   private char hexConverted(long number) {
     switch ((int) number) {
@@ -46,16 +44,15 @@ class BinarytoHexadecimal extends Conversions {
     int i = 0;
     char pop = ' ';
     String result = "";
-    while(!number.isEmpty()) {
+    while (!number.isEmpty()) {
       pop = number.pop();
       if (pop == '1') {
         numberToCon = numberToCon + ((int) Math.pow(2, i));
       }
-      if (i % 3 == 0  && i !=0) {
+      if (i % 3 == 0 && i != 0) {
         if (numberToCon >= 10) {
           stackInt.push(numberToCon);
-        }
-        else {
+        } else {
           stackInt.push(numberToCon);
         }
         numberToCon = 0;
@@ -63,12 +60,12 @@ class BinarytoHexadecimal extends Conversions {
       }
       i++;
     }
-    while(!stackInt.isEmpty()) {
+    while (!stackInt.isEmpty()) {
       if (stackInt.peek() >= 10) {
         result += this.hexConverted(stackInt.pop());
-      }
-      else result = result + stackInt.pop();
-      
+      } else
+        result = result + stackInt.pop();
+
     }
     this.setStringValue(result);
 

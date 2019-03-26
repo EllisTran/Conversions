@@ -1,4 +1,5 @@
 import java.util.Scanner;
+
 public class Main {
 
   public static void main(String[] args) {
@@ -18,8 +19,7 @@ public class Main {
     if (conversionType.equals("Binary to Decimal")) {
       BinarytoDecimal b2d = new BinarytoDecimal(num1, scan);
       b2d.printConversion();
-    }
-    else if (conversionType.equals("Binary to Hexadecimal")) {
+    } else if (conversionType.equals("Binary to Hexadecimal")) {
       BinarytoHexadecimal b2h = new BinarytoHexadecimal(num1, scan);
       b2h.printConversion();
     }
