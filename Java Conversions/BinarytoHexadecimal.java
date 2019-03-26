@@ -5,15 +5,18 @@ class BinarytoHexadecimal extends Conversions {
   BinarytoHexadecimal(long num, Scanner scan) {
     super(num, scan, "Binary to Hexadecimal");
     this.doFirst();
+    this.setTime(this.getStartTime(), this.getEndTime());
   }
   protected void doFirst() {
     this.introduction();
+    this.setStartTime();
     if (this.getDataStructureName().equals("Stack")) {
       this.doConversion();
     }
     else if (this.getDataStructureName().equals("Queue")) {
       System.out.println("Queue");
     }
+    this.setEndTime();
   }
 
   
@@ -73,7 +76,6 @@ class BinarytoHexadecimal extends Conversions {
   }
 
   public void doConversion() {
-    long start = System.nanoTime();
     this.setValue(0);
     String number = Long.toString(this.getNumber());
     while (number.length() % 4 != 0) {
@@ -89,8 +91,6 @@ class BinarytoHexadecimal extends Conversions {
       stack.push(sendToHexConversion[i]);
     }
     this.hexConversion(stack);
-    long end = System.nanoTime();
-    this.setTime(start, end);
     this.setConverted();
   }
 }

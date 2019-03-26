@@ -4,10 +4,12 @@ class BinarytoDecimal extends Conversions {
   BinarytoDecimal(long num, Scanner scan) {
     super(num, scan, "Binary to Decimal");
     this.doFirst();
+    this.setTime(this.getStartTime(), this.getEndTime());
   }
 
   protected void doFirst() {
     this.introduction();
+    this.setStartTime(); //Set time 
     if (this.getDataStructureName().equals("Stack")) {
       System.out.println("Stack");
       this.doConversionWithStack();
@@ -18,11 +20,11 @@ class BinarytoDecimal extends Conversions {
     else if (this.getDataStructureName().equals("Normal")) {
       this.doConversion();
     }
+    this.setEndTime(); // End Time
   }
 
   public void doConversion() {
-    long start = System.nanoTime();
-
+    
     this.setValue(0);
     String number = Long.toString(this.getNumber());
 
@@ -36,13 +38,10 @@ class BinarytoDecimal extends Conversions {
     }
     this.setStringValue(Long.toString(this.getValue()));
     this.setConverted();
-    long end = System.nanoTime();
-
-    this.setTime(start, end);
+    
   }
 
   public long doConversionWithStack() {
-    long start = System.nanoTime();
     long num = 0;
     this.setValue(0);
     String number = reverseString(Long.toString(this.getNumber()));
@@ -64,8 +63,6 @@ class BinarytoDecimal extends Conversions {
     }
     this.setConverted();
     this.setStringValue(Long.toString(this.getValue()));
-    long end = System.nanoTime();
-    this.setTime(start, end);
     return this.getValue();
   }
 

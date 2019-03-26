@@ -2,14 +2,17 @@ import java.lang.Math;
 import java.util.Scanner;
 
 abstract class Conversions {
-  protected String conversionName = "";
-  protected String stringValue = "";
-  protected long number = 0;
-  protected long value = 0;
-  protected long time = 0;
-  protected String dataName = "";
-  protected boolean converted = false;
-  protected Scanner scan;
+  private String conversionName = "";
+  private String stringValue = "";
+  private long number = 0;
+  private long value = 0;
+  private long time = 0;
+  private long startTime = 0;
+  private long endTime = 0;
+  private String dataName = "";
+  private boolean converted = false;
+  private Scanner scan;
+  
   Conversions(long number, Scanner scan, String conversionName) {
     this.setNumber(number);
     this.setConversionName(conversionName);
@@ -32,13 +35,25 @@ abstract class Conversions {
     this.setDataStructureName(dataName);
   }
 
-  abstract protected void doFirst();
+  
   // Setter and Getter Functions
   private void setNumber(long number) {
     this.number = number;
   }
   protected long getNumber() {
     return this.number;
+  }
+  protected void setStartTime() {
+    this.startTime = System.nanoTime();
+  }
+  protected void setEndTime() {
+    this.endTime = System.nanoTime();
+  }
+  protected long getStartTime() {
+    return this.startTime;
+  }
+  protected long getEndTime() {
+    return this.endTime;
   }
   protected void setTime(long timeStart, long timeEnd) {
     this.time = (timeEnd - timeStart);
@@ -80,7 +95,10 @@ abstract class Conversions {
   protected String getStringValue() {
     return this.stringValue;
   }
+
+  // Abstract methods
   protected abstract void doConversion();
+  protected abstract void doFirst();
 
   protected void printConversion() {
     System.out.println("The conversion name is: " + this.getConversionName());
