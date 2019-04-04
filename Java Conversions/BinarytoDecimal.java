@@ -1,13 +1,16 @@
 import java.util.Stack;
 import java.util.Scanner;
 
+//Class Declaration
 class BinarytoDecimal extends Conversions {
+  //Constructor
   BinarytoDecimal(long num, Scanner scan) {
     super(num, scan, "Binary to Decimal");
     this.doFirst();
     this.setTime(this.getStartTime(), this.getEndTime());
   }
 
+  //Methods
   protected void doFirst() {
     this.introduction();
     this.setStartTime(); // Set time

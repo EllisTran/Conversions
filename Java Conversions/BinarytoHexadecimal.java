@@ -1,13 +1,17 @@
 import java.util.*;
 import java.util.Scanner;
 
+//Class Declaration
 class BinarytoHexadecimal extends Conversions {
+	
+  //Constructor	
   BinarytoHexadecimal(long num, Scanner scan) {
     super(num, scan, "Binary to Hexadecimal");
     this.doFirst();
     this.setTime(this.getStartTime(), this.getEndTime());
   }
 
+  //Methods
   protected void doFirst() {
     this.introduction();
     this.setStartTime();
