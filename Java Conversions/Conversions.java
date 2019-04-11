@@ -31,13 +31,25 @@ abstract class Conversions {
       if (firstIter) {
         System.out.println("Error. Please enter again\n");
       }
-      System.out.println("Stack\nQueue\nNormal (Iterates through a loop)");
+      if (this.getConversionName().equals("Binary to Decimal"))
+        System.out.println("Stack\nQueue\nNormal (Iterates through a loop)");
+      else {
+        System.out.println("Stack\nQueue");
+      }
       dataName = this.scan.next();
       firstIter = true;
     } while (!(dataName.equals("Stack") || dataName.equals("Queue") || dataName.equals("Normal")));
     System.out.println("\nYou chose the " + dataName + " method\n");
     this.setDataStructureName(dataName);
   }
+
+  protected String reverseString(String number) {
+    StringBuilder sb = new StringBuilder();
+    for (int i = number.length() - 1; i >= 0; i--) {
+      sb.append(number.charAt(i));
+    }
+    return sb.toString();
+  } 
 
   // Setter and Getter Functions
   private void setNumber(long number) {

@@ -1,4 +1,6 @@
 import java.util.Stack;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Scanner;
 
 //Class Declaration
@@ -15,17 +17,16 @@ class BinarytoDecimal extends Conversions {
     this.introduction();
     this.setStartTime(); // Set time
     if (this.getDataStructureName().equals("Stack")) {
-      System.out.println("Stack");
       this.doConversionWithStack();
     } else if (this.getDataStructureName().equals("Queue")) {
-      System.out.println("Queue");
+      this.doConversionWithQueue();
     } else if (this.getDataStructureName().equals("Normal")) {
       this.doConversion();
     }
     this.setEndTime(); // End Time
   }
 
-  public void doConversion() {
+  protected void doConversion() {
 
     this.setValue(0);
     String number = Long.toString(this.getNumber());
@@ -43,7 +44,7 @@ class BinarytoDecimal extends Conversions {
 
   }
 
-  public long doConversionWithStack() {
+  protected void doConversionWithStack() {
     long num = 0;
     this.setValue(0);
     String number = reverseString(Long.toString(this.getNumber()));
@@ -64,14 +65,24 @@ class BinarytoDecimal extends Conversions {
     }
     this.setConverted();
     this.setStringValue(Long.toString(this.getValue()));
-    return this.getValue();
   }
 
-  private String reverseString(String number) {
-    StringBuilder sb = new StringBuilder();
-    for (int i = number.length() - 1; i >= 0; i--) {
-      sb.append(number.charAt(i));
+  protected void doConversionWithQueue() {
+    this.setValue(0);
+    String number = Long.toString(this.getNumber());
+    Queue<Long> queue = new LinkedList<Long>();
+    for (int i = 0; i < number.length(); i++) {
+      queue.add((long) Character.getNumericValue(number.charAt(i)));
     }
-    return sb.toString();
+    for (int i = 0; i < number.length(); i++) {
+      if (queue.poll() == 1) {
+        this.setValue(this.getValue() + ((int) Math.pow(2,i)));
+      }
+      else {
+        continue;
+      }
+    }
+    this.setConverted();
+    this.setStringValue(Long.toString(this.getValue()));
   }
 }
