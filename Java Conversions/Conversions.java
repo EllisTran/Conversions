@@ -1,7 +1,9 @@
 import java.lang.Math;
 import java.util.Scanner;
 
+//Abstract Class Declaration
 abstract class Conversions {
+  // Initialize Member Variables
   private String conversionName = "";
   private String stringValue = "";
   private long number = 0;
@@ -13,6 +15,7 @@ abstract class Conversions {
   private boolean converted = false;
   private Scanner scan;
 
+  //Constructor
   Conversions(long number, Scanner scan, String conversionName) {
     this.setNumber(number);
     this.setConversionName(conversionName);
@@ -125,7 +128,7 @@ abstract class Conversions {
     return this.stringValue;
   }
 
-  // Abstract methods
+  // Abstract methods (Methods that are required in every child class!)
   protected abstract void doConversion();
 
   protected abstract void doFirst();

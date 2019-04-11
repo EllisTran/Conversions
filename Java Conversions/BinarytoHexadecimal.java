@@ -1,13 +1,17 @@
 import java.util.*;
 import java.util.Scanner;
 
+//Class Declaration
 class BinarytoHexadecimal extends Conversions {
+	
+  //Constructor	
   BinarytoHexadecimal(long num, Scanner scan) {
     super(num, scan, "Binary to Hexadecimal");
     this.doFirst();
     this.setTime(this.getStartTime(), this.getEndTime());
   }
 
+  //Methods
   protected void doFirst() {
     this.introduction();
     this.setStartTime();
@@ -85,7 +89,6 @@ class BinarytoHexadecimal extends Conversions {
       }
         if (i % 3 == 0 && i != 0) {
           if (numberToCon >= 10) {
-            System.out.println(numberToCon);
             queueInt.add(numberToCon);
           } else {
             System.out.println(numberToCon);
