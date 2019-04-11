@@ -14,7 +14,10 @@ class BinarytoHexadecimal extends Conversions {
     if (this.getDataStructureName().equals("Stack")) {
       this.doConversion();
     } else if (this.getDataStructureName().equals("Queue")) {
-      System.out.println("Queue");
+      this.doConversionWithQueue();
+    }
+    else {
+      this.doConversion();
     }
     this.setEndTime();
   }
@@ -38,7 +41,7 @@ class BinarytoHexadecimal extends Conversions {
     }
   }
 
-  private String hexConversion(Stack<Character> number) {
+  private void hexConversion(Stack<Character> number) {
     long numberToCon = 0;
     Stack<Long> stackInt = new Stack<Long>();
     int i = 0;
@@ -68,7 +71,41 @@ class BinarytoHexadecimal extends Conversions {
 
     }
     this.setStringValue(result);
-
+  }
+  private String hexConversion(Queue<Character> number) {
+    long numberToCon = 0;
+    Queue<Long> queueInt = new LinkedList<Long>();
+    int i = 0;
+    char remove = ' ';
+    String result = "";
+    while (!number.isEmpty()) {
+      remove = number.remove();
+      if (remove == '1') {
+        numberToCon = numberToCon + ((int) Math.pow(2, i));
+      }
+        if (i % 3 == 0 && i != 0) {
+          if (numberToCon >= 10) {
+            System.out.println(numberToCon);
+            queueInt.add(numberToCon);
+          } else {
+            System.out.println(numberToCon);
+            queueInt.add(numberToCon);
+          }
+          numberToCon = 0;
+          i = -1;
+        }
+        i++;
+      }
+      
+    while (!queueInt.isEmpty()) {
+      if (queueInt.peek() >= 10) {
+        result += this.hexConverted(queueInt.remove());
+      }
+      else {
+        result = result + queueInt.remove();
+      }
+    }
+    this.setStringValue(this.reverseString(result));
     return this.getStringValue();
   }
 
@@ -89,5 +126,25 @@ class BinarytoHexadecimal extends Conversions {
     }
     this.hexConversion(stack);
     this.setConverted();
+  }
+  
+  protected void doConversionWithQueue() {
+    this.setValue(0);
+    String number = Long.toString(this.getNumber());
+    while (number.length() % 4 != 0) {
+      number = "0" + number;
+    }
+
+    number = this.reverseString(number);
+    Queue<Character> queue = new LinkedList<Character>();
+    StringBuilder numberToConvert = new StringBuilder(number);
+
+    char[] sendToHexConversion = new char[64];
+    for (int i = 0; i < numberToConvert.length(); i++) {
+      sendToHexConversion[i] = numberToConvert.charAt(i);
+      queue.add(sendToHexConversion[i]);
+    }
+    
+    this.hexConversion(queue);
   }
 }

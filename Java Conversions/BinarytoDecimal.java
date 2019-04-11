@@ -64,14 +64,6 @@ class BinarytoDecimal extends Conversions {
     this.setStringValue(Long.toString(this.getValue()));
   }
 
-  private String reverseString(String number) {
-    StringBuilder sb = new StringBuilder();
-    for (int i = number.length() - 1; i >= 0; i--) {
-      sb.append(number.charAt(i));
-    }
-    return sb.toString();
-  }
-
   protected void doConversionWithQueue() {
     this.setValue(0);
     String number = Long.toString(this.getNumber());
