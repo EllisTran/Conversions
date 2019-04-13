@@ -1,13 +1,12 @@
 import java.util.Scanner;
 import java.util.Stack;
 
-import com.sun.jdi.LongValue;
-
-class DecimaltoBinary extends Conversions {
+class DecimaltoHexadecimal extends Conversions {
   Stack<Long> stack;
   long permNum;
-  DecimaltoBinary(long num, Scanner scan) {
-    super(num, scan, "Decimal to Binary");
+  
+  DecimaltoHexadecimal(long num, Scanner scan) {
+    super(num, scan, "DecimaltoHexadecimal");
     this.stack = new Stack<Long>();
     this.setPermNum(num);
     this.doFirst();
@@ -28,7 +27,10 @@ class DecimaltoBinary extends Conversions {
   protected void convertStacktoString(Stack<Long> stack) {
     String number = "";
     for (int i = 0; i < this.stack.size();) {
-      number = number + this.stack.pop().toString();
+      if (this.stack.peek() > 9) {
+        number = number + (this.hexConverted(this.stack.pop()));
+      } else
+        number = number + this.stack.pop().toString();
     }
     this.setStringValue(number);
   }
@@ -37,19 +39,37 @@ class DecimaltoBinary extends Conversions {
     System.out.println("Welcome to the " + this.getConversionName() + " Conversion.");
   }
 
+  private char hexConverted(long number) {
+    switch ((int) number) {
+    case 10:
+      return 'a';
+    case 11:
+      return 'b';
+    case 12:
+      return 'c';
+    case 13:
+      return 'd';
+    case 14:
+      return 'e';
+    case 15:
+      return 'f';
+    default:
+      return 'z';
+    }
+  }
+
   protected void doConversion() {
     this.setValue(0);
-    if (this.getNumber() % 2 == 0) {
-      this.stack.push((long) 0);
-      this.setNumber(this.getNumber() / 2);
-    } else {
-      this.stack.push((long) 0);
-      this.setNumber(this.getNumber() / 2);
-    }
+    long remainder = 0;
+
+    remainder = this.getNumber() % 16;
+    this.stack.push(remainder);
+    this.setNumber(this.getNumber() / 16);
     if (this.getNumber() != 0) {
       this.doConversion();
-    } else {
-      this.setNumber(permNum);
+    }
+    else {
+      this.setNumber(this.permNum);
       this.convertStacktoString(stack);
     }
   }
