@@ -9,10 +9,10 @@ public class Main {
         Scanner scan = new Scanner(System.in);
         // Get user input
         do {
-            System.out.println("Types of conversions available:\nBinary to Decimal\nBinary to Hexadecimal\n");
+            System.out.println("Types of conversions available:\nBinary to Decimal\nBinary to Hexadecimal\nDecimal to Binary\n");
             System.out.print("Pick a conversion type: ");
             conversionType = scan.nextLine();
-        } while (!(conversionType.equals("Binary to Decimal") || conversionType.equals("Binary to Hexadecimal")));
+        } while (!(conversionType.equals("Binary to Decimal") || conversionType.equals("Decimal to Binary") || conversionType.equals("Binary to Hexadecimal")));
 
         System.out.print("What numbers would you like to convert? (Up to 20 digits): ");
         num1 = scan.nextLong();
@@ -23,6 +23,9 @@ public class Main {
         } else if (conversionType.equals("Binary to Hexadecimal")) {
             BinarytoHexadecimal b2h = new BinarytoHexadecimal(num1, scan);
             b2h.printConversion();
+        } else if (conversionType.equals("Decimal to Binary")) {
+            DecimaltoBinary d2b = new DecimaltoBinary(num1, scan);
+            d2b.printConversion();
         }
         scan.close();
     }

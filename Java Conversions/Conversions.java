@@ -33,7 +33,7 @@ abstract class Conversions {
       }
       if (this.getConversionName().equals("Binary to Decimal"))
         System.out.println("Stack\nQueue\nNormal (Iterates through a loop)");
-      else {
+      else if (this.getConversionName().equals("Binary to Hexadecimal")){
         System.out.println("Stack\nQueue");
       }
       dataName = this.scan.next();
@@ -52,7 +52,7 @@ abstract class Conversions {
   } 
 
   // Setter and Getter Functions
-  private void setNumber(long number) {
+  protected void setNumber(long number) {
     this.number = number;
   }
 
@@ -135,7 +135,8 @@ abstract class Conversions {
 
   protected void printConversion() {
     System.out.println("The conversion name is: " + this.getConversionName());
-    System.out.println("The data structure used is: " + this.getDataStructureName());
+    if (!this.getDataStructureName().equals(""))
+      System.out.println("The data structure used is: " + this.getDataStructureName());
     System.out.println("The number to be converted is: " + this.getNumber());
     System.out.println("The converted value is: " + this.getStringValue());
     System.out.println("The time it took to convert: " + this.getTime() + " picoseconds");
